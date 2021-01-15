@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.principal',
-    'core.almacen'
+    'core.almacen',
+    'core.blog'
 ]
 
 MIDDLEWARE = [

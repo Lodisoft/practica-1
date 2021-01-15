@@ -19,5 +19,6 @@ from core.principal.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', indexView.as_view(), name="index"),
-    path('almacen/', include('core.almacen.urls'))
+    path('almacen/', include('core.almacen.urls')),
+    path('blog/', include('core.blog.urls'))
 ]

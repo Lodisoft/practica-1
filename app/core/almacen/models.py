@@ -1,11 +1,13 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-
+from django.utils.timezone import now
 
 # Create your models here.
 class Area(models.Model):
     name = models.CharField(max_length=50, verbose_name = 'Nombre', validators=[MinLengthValidator(4)])
     description = models.TextField(verbose_name = 'Descipción', validators=[MinLengthValidator(5)])
+    created_on = models.DateTimeField(auto_now_add=True, verbose_name='Fecha Creación')
+    updated_on = models.DateTimeField(auto_now=True, verbose_name='Fecha Edición')
 
     class Meta:
         verbose_name = "Área"
@@ -19,6 +21,8 @@ class Area(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50, validators=[MinLengthValidator(4)])
     desciption = models.TextField(verbose_name = 'Descripción', validators=[MinLengthValidator(4)])
+    created_on = models.DateTimeField(auto_now_add=True, verbose_name='Fecha Creación')
+    updated_on = models.DateTimeField(auto_now=True, verbose_name='Fecha Edición')
     
 
     class Meta:
@@ -37,6 +41,8 @@ class Product(models.Model):
     min_stock = models.PositiveIntegerField(verbose_name = 'Stock Minimo', blank= True, default = 1)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, verbose_name = 'Área')
     categories = models.ManyToManyField('Category', verbose_name = 'Categorias')
+    created_on = models.DateTimeField(auto_now_add=True, verbose_name='Fecha Creación')
+    updated_on = models.DateTimeField(auto_now=True, verbose_name='Fecha Edición')
 
     class Meta:
         verbose_name = "Producto"
