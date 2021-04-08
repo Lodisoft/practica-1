@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Simple blog{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'blog:index_blog' %}">Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item {% if request.path == '/blog/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'blog:index_blog' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:about_blog' %}">Sobre mi</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{request.user.username}}</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{#% url 'blog:logout' %#}">Logout</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:login_blog' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:register_blog' %}">Registro</a>
+            </li>
+            {% endif %}
+          </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Content -->
+  <div class="container"><br><br>
+     {% block content %}{% endblock %}    
+     <!-- Sidebar Widgets Column -->
+     <div class="col-md-4">
+        <!-- Categories Widget -->
+        <div class="card my-4">
+           <h5 class="card-header">Categories</h5>
+           <div class="card-body">
+              <div class="row">
+                 <div class="col-lg-12">
+                    <ul class="list-unstyled mb-0">
+                      {% for category in categories %}
+                      <li>
+                          <a href="#">{{category.name}}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- Side Widget -->
+        <div class="card my-4">
+           <h5 class="card-header">Side Widget</h5>
+           <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+           </div>
+        </div>
+     </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+     <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Simple Blog {% now "Y" %}</p>
+     </div>
+     <!-- /.container -->
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
