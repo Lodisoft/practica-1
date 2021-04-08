@@ -28,7 +28,7 @@ SECRET_KEY = ')9#bsm(u^asn8xv^)t0lzo^_^17xg%0nl4ha#1ph13jk_jqe9i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['desolate-bayou-96106.herokuapp.com', 'localhost', '127.0.0.1', '[::1]', '.herokuapp.com','https://desolate-bayou-96106.herokuapp.com/', '*.herokuapp.com']
+ALLOWED_HOSTS = ['https://dry-gorge-16608.herokuapp.com/','dry-gorge-16608.herokuapp.com','desolate-bayou-96106.herokuapp.com', 'localhost', '127.0.0.1', '[::1]', '.herokuapp.com','https://desolate-bayou-96106.herokuapp.com/', '*.herokuapp.com']
 
 
 # Application definition
