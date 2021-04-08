@@ -37,14 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'core.principal',
     'core.almacen',
     'core.blog',
     'ckeditor'
-=======
-    'core.principal'
->>>>>>> master
 ]
 
 MIDDLEWARE = [
