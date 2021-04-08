@@ -25,7 +25,7 @@ SECRET_KEY = ')9#bsm(u^asn8xv^)t0lzo^_^17xg%0nl4ha#1ph13jk_jqe9i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['desolate-bayou-96106.herokuapp.com', 'desolate-bayou-96106.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
